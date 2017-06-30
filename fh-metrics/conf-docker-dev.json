@@ -1,0 +1,70 @@
+{
+  "mbaasid": "{{env.FH_MBAASID}}",
+  "metrics": {
+    "port": 8080,
+    "logger": {
+      "name": "metrics",
+      "streams": [
+        {
+          "type": "stream",
+          "src": true,
+          "level": "{{env.FH_LOG_LEVEL}}",
+          "stream": "process.stdout"
+        }
+      ]
+    },
+    "ignoreAPIKey": false,
+    "metricsAPIKey": "{{env.FH_METRICS_API_KEY}}",
+    "ssl": {
+      "use_ssl": "false",
+      "key": "/etc/ssl/certs/feedhenry.net-private.key",
+      "cert": "/etc/ssl/certs/feedhenry.net-wildcard.pem",
+      "port": 8813
+    },
+    "database": {
+      "enabled": true,
+      "name": "{{env.MONGODB_FHREPORTING_DATABASE}}",
+      "host": "mongodb-1",
+      "port": 27017,
+      "auth": {
+        "user": "{{env.MONGODB_FHREPORTING_USER}}",
+        "pass": "{{env.MONGODB_FHREPORTING_PASSWORD}}",
+        "source": "{{env.MONGODB_FHREPORTING_DATABASE}}"
+      },
+      "options": {
+        "replicaSet": "{{env.MONGODB_REPLICA_NAME}}"
+      }
+    },
+    "idFieldName": {
+      "default": "_id.appid",
+      "domainrequestsdest": "_id.domain",
+      "domaintransactionsdest": "_id.domain",
+      "domainrequestsgeo": "_id.domain",
+      "domaintransactionsgeo": "_id.domain",
+      "domainstartupsdest": "_id.domain",
+      "domaininstallsdest": "_id.domain",
+      "domainstartupsgeo": "_id.domain",
+      "domaininstallsgeo": "_id.domain",
+      "domainactivedevice": "_id.domain",
+      "domainactivedevicegeo": "_id.domain",
+      "appownernumcreates": "_id.domain",
+      "appownernumcreatesgeo": "_id.domain",
+      "usernumlogin": "_id.domain",
+      "usernumlogingeo": "_id.domain",
+      "usercreate": "_id.domain",
+      "usercreategeo": "_id.domain",
+      "userlogin": "_id.domain",
+      "userlogingeo": "_id.domain",
+      "appcreate": "_id.domain",
+      "appcreategeo": "_id.domain",
+      "appbuild": "_id.domain",
+      "appbuildgeo": "_id.domain",
+      "credentialsuploaded": "_id.domain",
+      "credentialsuploadedgeo": "_id.domain"
+    }
+  },
+  "retryConfig": {
+    "interval": 1000,
+    "limit": 10
+  }
+}
